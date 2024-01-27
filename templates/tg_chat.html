@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title%} {{ title }} {% endblock %}
+{% block content%}
+
+<div class="container py-4 text-center">
+    {% if current_user.is_authenticated %}
+
+        <h1>Привет {{ current_user.username }}</h1>
+        <h1></h1>
+        <a href="{{url_for('get_me')}}">Get Me</a>
+        <a href="{{url_for('logout')}}">Logout</a>
+        <a href="{{url_for('wb_item')}}">Wb</a>
+
+        <div>Chat List</div>
+        {% for a,b in chat %}
+            <div>
+                <a href=http://127.0.0.1:5000/chats?data={{b['hhh']}}>{{b['name']}}</a>
+            </div>
+        {% endfor %}
+    
+    {% else %}
+
+        <a href="{{url_for('login')}}">Sign in/Sign Up</a>
+    
+    {% endif %}
+</div>
+{% endblock %}
